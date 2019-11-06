@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        function sagaDon(rover) {
+            switch (rover.yon) {
+                case 'E': rover.direction = 'S'; break;
+                case 'S': rover.direction = 'W'; break;
+                case 'N': rover.direction = 'E'; break;
+                case 'W': rover.direction = 'N'; break;
+            }
+
+        }
+        function solaDon(rover) {
+            switch (rover.yon) {
+
+                case 'S': rover.yon = 'E'; break;
+                case 'W': rover.yon = 'S'; break;
+                case 'N': rover.yon = 'W'; break;
+                case 'E': rover.yon = 'N'; break;
+            }
+        }
+        function ilerle(rover) {
+            switch (rover.yon) {
+                case 'S':
+                    if (!(rover.y < 0 || rover.y > 10)) {
+                        rover.y++;
+                    }
+                    break;
+                case 'W':
+                    if (!(rover.x < 0 || rover.x > 10)) {
+                        rover.x--;
+                    }
+                    break;
+                case 'N':
+                    if (!(rover.y <= 0 || rover.y > 10)) {
+                        rover.y--;
+                    }
+                    break;
+
+                case 'E':
+                    if (!(rover.x < 0 || rover.x > 10)) {
+                        rover.x++;
+                    }
+                    break;
+            }
+        }
+
+        function commandsRover(rover) {
+            var rota = prompt("r:sağ, l:sol f:ilerle");
+
+            if (rota.indexOf('r') >= 0 || rota.indexOf('l') >= 0 || rota.indexOf('f') >= 0) {
+                var yeniRota = rota.split("");
+                for (var i = 0; i < yeniRota.length; i++) {
+
+                    switch (rota[i]) {
+                        case 'l': sagaDon(rover); break;
+                        case 'r': solaDon(rover); break;
+                        case 'f': ilerle(rover); break;
+                    }
+
+                    var position = [rover1.x, rover1.y];
+                    rover1.konum.push(position);
+
+                }
+
+            }
+        }
+        var rover1 = {
+            x: 0,
+            y: 0,
+            konum: [],
+            yon: "W",
+        };
+        commandsRover(rover1);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
